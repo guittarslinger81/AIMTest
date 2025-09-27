@@ -34,7 +34,7 @@ struct ContentView: View {
                                             .aspectRatio(contentMode: .fit)
                                             .clipShape(RoundedRectangle(cornerRadius: 15))
                                         } else if phase.error != nil {
-                                            Color.pink
+                                            Color.red
                                         } else {
                                             Color.gray
                                         }

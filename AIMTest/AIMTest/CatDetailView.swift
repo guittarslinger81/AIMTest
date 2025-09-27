@@ -31,7 +31,7 @@ struct CatDetailView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .clipShape(RoundedRectangle(cornerRadius: 15))
                                 } else if phase.error != nil {
-                                    Color.pink
+                                    Color.red
                                 } else {
                                     Color.gray
                                 }
@@ -101,7 +101,6 @@ struct CatDetailView: View {
         let request = apiHelper.getCatDetails(selectedCatId: selectedCatId)
         let (data, _) = try await URLSession.shared.data(for: request)
         let response = try JSONDecoder().decode(CatDetails.self, from: data)
-        print(response)
         catDetails = response
         isLoading.toggle()
     }
