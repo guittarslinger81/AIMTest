@@ -8,10 +8,17 @@
 import Foundation
 
 struct CatAPIHelper {
+    
+    //list base url
     private let catListBaseUrl = "https://api.thecatapi.com/v1/images/search?has_breeds=1&limit=23"
+    
+    //details base url
     private let catDetailsBaseUrl = "https://api.thecatapi.com/v1/images/"
+    
+    //had to get my own api key. the key provided did not allow for detailed data, fyi.
     private let apiKey = "live_7mfWa25LBhWKM3wTZAzUudObt9Cz84xPI2iO6UUQqjm7T5opHV51kFks4Gscho5M"
     
+    //build request for list
     func getCatList() -> URLRequest {
         guard let url = URL(string: catListBaseUrl) else {
             return URLRequest(url: URL(string: catListBaseUrl)!)
@@ -23,6 +30,7 @@ struct CatAPIHelper {
         return request
     }
     
+    //build request for details
     func getCatDetails(selectedCatId: String) -> URLRequest {
         let fullUrl = catDetailsBaseUrl + selectedCatId
         guard let url = URL(string: fullUrl) else {

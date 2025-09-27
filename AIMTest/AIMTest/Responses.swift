@@ -24,6 +24,7 @@ struct CatDetails: Codable, Identifiable, Hashable {
     var url: String
     var breeds: [CatBreed]?
     
+    //default info for previews/initial page load
     init() {
         id = "cat"
         width = 1205
@@ -72,6 +73,7 @@ struct Weight: Codable, Equatable, Hashable {
     var metric: String
 }
 
+//data not used in app - blank stubs for comformity
 struct Favourite: Codable, Equatable, Hashable {
     
 }
