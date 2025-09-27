@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CatImage: Codable, Identifiable {
+struct CatImage: Codable, Identifiable, Hashable {
     var id: String
     var url: String
     var width: Int
@@ -23,9 +23,27 @@ struct CatDetails: Codable, Identifiable {
     var height: Int
     var url: String
     var breeds: [CatBreed]
+    
+    init() {
+        id = "cat"
+        width = 1205
+        height = 1445
+        url = "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg"
+        breeds = [CatBreed(
+            weight: Weight(imperial: "130 lbs", metric: "58.9 kg"),
+            id: "cat",
+            name: "The Test Cat",
+            temperament: "Neurospicy",
+            origin: "SoCal, bro",
+            countryCodes: "US",
+            countryCode: "US",
+            lifeSpan: "Infinite",
+            wikipediaUrl: "https://www.imdb.com/name/nm11352930/"
+        )]
+    }
 }
 
-struct CatBreed: Codable {
+struct CatBreed: Codable, Identifiable, Equatable, Hashable {
     var weight: Weight
     var id: String
     var name: String
@@ -49,15 +67,15 @@ struct CatBreed: Codable {
     }
 }
 
-struct Weight: Codable {
+struct Weight: Codable, Equatable, Hashable {
     var imperial: String
     var metric: String
 }
 
-struct Favourite: Codable {
+struct Favourite: Codable, Equatable, Hashable {
     
 }
 
-struct Vote: Codable {
+struct Vote: Codable, Equatable, Hashable {
     
 }

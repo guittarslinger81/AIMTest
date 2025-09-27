@@ -13,6 +13,7 @@ struct ContentView: View {
     private var apiHelper = CatAPIHelper()
     @State private var isLoading = false
     @State private var errorMessage: String?
+    @State private var selectedCat = CatDetails()
     
     var body: some View {
         NavigationStack {
@@ -22,7 +23,11 @@ struct ContentView: View {
                 } else if let errorMessage {
                     Text(errorMessage)
                 } else {
-                    
+                    List(catListResults, id: \.self) { cat in
+                        NavigationLink(destination: CatDetailView(cat: selectedCat)) {
+                            
+                        }
+                    }
                 }
             }
         }
