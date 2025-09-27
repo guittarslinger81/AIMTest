@@ -24,7 +24,7 @@ struct ContentView: View {
                 } else if let errorMessage {
                     Text(errorMessage)
                 } else {
-                    Text("Random Cat Generator")
+                    Text("Choose a kitty to learn more")
                         .font(.subheadline)
                     List(catListResults, id: \.self) { cat in
                         NavigationLink(destination: CatDetailView(catId: cat.id)) {
@@ -50,7 +50,8 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationTitle("Cats Are THE Best")
+            .navigationTitle("CDS FIELD GUIDE")
+            .navigationBarTitleDisplayMode(.inline)
             .task {
                 do {
                     try await loadCatsList()
