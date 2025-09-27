@@ -9,8 +9,16 @@ import Foundation
 
 struct CatAPIHelper {
     
-    //list base url
+    //list base url - modified to search only for cats with breed info (name, etc) for ux
+    //this search appears to be semi-unstable on the API end. if it hangs, either restart the app,
+    //or comment the below catListBaseUrl and uncomment the one beneath it.
+    //appears to work 75% of the time. if i were making a production app, i would add a timer to
+    //automatically retry the search without the breed info requirement and i would also complain to the
+    //api folks to fix the instability.
     private let catListBaseUrl = "https://api.thecatapi.com/v1/images/search?has_breeds=1&limit=23"
+    
+    //uncomment for search without breed info requirement
+    //private let catListBaseUrl = "https://api.thecatapi.com/v1/images/search?limit=23"
     
     //details base url
     private let catDetailsBaseUrl = "https://api.thecatapi.com/v1/images/"
