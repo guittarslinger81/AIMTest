@@ -11,6 +11,8 @@ Upon running the app, the user will be presented with a loading screen while the
 
 Clicking on a cat list item will take the user to the cat details view where they will be presented with the cat's name, a larger sized image of the cat, and details about the cat including: weight, origin, lifespan, temperament, and a link to the cat's wikipedia page. If this were a production app with more of a runway, I would localize the weight to the user's preferred type (imperial/metric) or add a setting to toggle between the two. If the cat details do not have a wikipedia link, the link will be replaced with a wikipedia link for a general cat search.
 
+Unit testing has been implemented to check the JSON decoding for the list screen and detail screen using test data.
+
 Bonus: The CDS Field Guide features a lightly-contrasted dark and light mode color scheme based on the user's device settings.
 
 Things I would add/change if given more time:
