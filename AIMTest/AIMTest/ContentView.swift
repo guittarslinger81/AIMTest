@@ -10,17 +10,16 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var catListResults: [CatImage] = []
-    @State private var catDetailsList: [CatDetails] = []
-    private var apiHelper = CatAPIHelper()
+    @State private var selectedCat = CatDetails()
     @State private var isLoading = false
     @State private var errorMessage: String?
-    @State private var selectedCat = CatDetails()
+    private var apiHelper = CatAPIHelper()
     
     var body: some View {
         NavigationStack {
             Group {
                 if isLoading {
-                    ProgressView("Loading cats. Be patient, meow.")
+                    ProgressView("Cats arrive when they want. Be patient, meow.")
                 } else if let errorMessage {
                     Text(errorMessage)
                 } else {
@@ -62,6 +61,7 @@ struct ContentView: View {
         }
     }
     
+    //get the cat list
     private func loadCatsList() async throws {
         isLoading.toggle()
         let request = apiHelper.getCatList()

@@ -95,6 +95,7 @@ struct CatDetailView: View {
         }
     }
     
+    //get the selected cat's details
     private func loadSelectedCat(selectedCatId: String) async throws {
         isLoading.toggle()
         let request = apiHelper.getCatDetails(selectedCatId: selectedCatId)
