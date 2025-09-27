@@ -8,13 +8,58 @@
 import SwiftUI
 
 struct CatDetailView: View {
-    @State var cat: CatDetails
+    var catId: String
+    var apiHelper = CatAPIHelper()
+    @State private var catDetails = CatDetails()
+    @State private var errorMessage: String?
+    @State private var isLoading = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Group {
+                if isLoading {
+                    ProgressView("Loading cats. Be patient, meow.")
+                } else if let errorMessage {
+                    Text(errorMessage)
+                } else {
+                    VStack {
+                        Text(catDetails.breeds?.first?.name ?? "Name unavailable")
+                            .font(.largeTitle)
+                        AsyncImage(url: URL(string: catDetails.url)) { phase in
+                            if let image = phase.image {
+                                image.resizable()
+                                } else if phase.error != nil {
+                                    Color.pink
+                                } else {
+                                    Color.gray
+                                }
+                        }
+                        .frame(width:300, height:300)
+                        
+                    }
+                }
+            }
+        }
+        .task {
+            do {
+                try await loadSelectedCat(selectedCatId: catId)
+            } catch {
+                errorMessage = error.localizedDescription
+            }
+        }
+    }
+    
+    private func loadSelectedCat(selectedCatId: String) async throws {
+        isLoading.toggle()
+        let request = apiHelper.getCatDetails(selectedCatId: selectedCatId)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let response = try JSONDecoder().decode(CatDetails.self, from: data)
+        print(response)
+        catDetails = response
+        isLoading.toggle()
     }
 }
 
 #Preview {
-    
-    CatDetailView(cat: CatDetails())
+    CatDetailView(catId: "23h")
 }

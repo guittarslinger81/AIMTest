@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var catListResults: [CatImage] = []
+    @State private var catDetailsList: [CatDetails] = []
     private var apiHelper = CatAPIHelper()
     @State private var isLoading = false
     @State private var errorMessage: String?
@@ -23,16 +24,32 @@ struct ContentView: View {
                 } else if let errorMessage {
                     Text(errorMessage)
                 } else {
+                    Text("Random Cat Generator")
+                        .font(.subheadline)
                     List(catListResults, id: \.self) { cat in
-                        NavigationLink(destination: CatDetailView(cat: selectedCat)) {
+                        NavigationLink(destination: CatDetailView(catId: cat.id)) {
                             HStack {
-                                
+                                AsyncImage(url: URL(string: cat.url)) { phase in
+                                    if let image = phase.image {
+                                        image.resizable()
+                                        } else if phase.error != nil {
+                                            Color.pink
+                                        } else {
+                                            Color.gray
+                                        }
+                                }
+                                .frame(width:100, height:100)
+                                LabeledContent {
+                                    Text(cat.breeds?.first?.name ?? "Unavailable")
+                                } label: {
+                                    Text("Name: ")
+                                }
                             }
                         }
                     }
                 }
             }
-            .navigationTitle("Cats Are Best")
+            .navigationTitle("Cats Are THE Best")
             .task {
                 do {
                     try await loadCatsList()
@@ -50,16 +67,6 @@ struct ContentView: View {
         let response = try JSONDecoder().decode([CatImage].self, from: data)
         catListResults = response
         isLoading.toggle()
-    }
-    
-    private func loadSelectedCat(selectedCatId: String) async throws -> CatDetails{
-        isLoading.toggle()
-        let request = apiHelper.getCatDetails(selectedCatId: selectedCatId)
-        let (data, _) = try await URLSession.shared.data(for: request)
-        let response = try JSONDecoder().decode(CatDetails.self, from: data)
-        let catDetails = response
-        isLoading.toggle()
-        return catDetails
     }
 }
 

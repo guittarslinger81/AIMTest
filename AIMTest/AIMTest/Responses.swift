@@ -12,17 +12,17 @@ struct CatImage: Codable, Identifiable, Hashable {
     var url: String
     var width: Int
     var height: Int
-    var breeds: [CatBreed]
+    var breeds: [CatBreed]?
     var favourite: Favourite?
     var vote: Vote?
 }
 
-struct CatDetails: Codable, Identifiable {
+struct CatDetails: Codable, Identifiable, Hashable {
     var id: String
     var width: Int
     var height: Int
     var url: String
-    var breeds: [CatBreed]
+    var breeds: [CatBreed]?
     
     init() {
         id = "cat"
