@@ -18,7 +18,7 @@ struct CatDetailView: View {
         VStack {
             Group {
                 if isLoading {
-                    ProgressView("Loading cats. Be patient, meow.")
+                    ProgressView("Loading cat details. Be patient, meow.")
                 } else if let errorMessage {
                     Text(errorMessage)
                 } else {
@@ -35,8 +35,28 @@ struct CatDetailView: View {
                                 }
                         }
                         .frame(width:300, height:300)
-                        
+                        Spacer()
+                        LabeledContent {
+                            Text(catDetails.breeds?.first?.weight.imperial ?? "Unavailable")
+                        } label: {
+                            Text("Weight (in lbs): ")
+                        }
+                        LabeledContent {
+                            Text(catDetails.breeds?.first?.origin ?? "Unavailable")
+                        } label: {
+                            Text("Origin: ")
+                        }
+                        LabeledContent {
+                            Text(catDetails.breeds?.first?.lifeSpan ?? "Unavailable")
+                        } label: {
+                            Text("Life Span (in years): ")
+                        }
+                        Spacer()
+                        Text("Temperament:")
+                        Text(catDetails.breeds?.first?.temperament ?? "Unavailable")
+                        Spacer()
                     }
+                    .padding()
                 }
             }
         }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct CatAPIHelper {
-    private let catListBaseUrl = "https://api.thecatapi.com/v1/images/search?limit=23"
+    private let catListBaseUrl = "https://api.thecatapi.com/v1/images/search?has_breeds=1&limit=23"
     private let catDetailsBaseUrl = "https://api.thecatapi.com/v1/images/"
     private let apiKey = "live_7mfWa25LBhWKM3wTZAzUudObt9Cz84xPI2iO6UUQqjm7T5opHV51kFks4Gscho5M"
     
