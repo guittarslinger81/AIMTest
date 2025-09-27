@@ -53,6 +53,7 @@ struct CatDetailView: View {
                         }
                         Spacer()
                         Text("Temperament:")
+                        Spacer()
                         Text(catDetails.breeds?.first?.temperament ?? "Unavailable")
                         Spacer()
                     }
@@ -81,5 +82,5 @@ struct CatDetailView: View {
 }
 
 #Preview {
-    CatDetailView(catId: "23h")
+    CatDetailView(catId: "TuSyTkt2n")
 }
