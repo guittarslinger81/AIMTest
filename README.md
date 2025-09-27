@@ -1,5 +1,4 @@
 # AIMTest
-Making a cat app (for a test).
 
 The CDS Field Guide is setup to run on the latest version of XCode (26) and should be run on a simulator running the latest version of iOS. If this were a production app, I would spend the time to ensure backwards compatibility with previous iOS versions.
 
