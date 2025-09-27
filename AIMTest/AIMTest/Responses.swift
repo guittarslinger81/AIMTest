@@ -53,7 +53,7 @@ struct CatBreed: Codable, Identifiable, Equatable, Hashable {
     var countryCodes: String
     var countryCode: String
     var lifeSpan: String
-    var wikipediaUrl: String
+    var wikipediaUrl: String?
     
     enum CodingKeys: String, CodingKey {
         case weight = "weight"

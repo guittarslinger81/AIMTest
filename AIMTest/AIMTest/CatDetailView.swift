@@ -77,7 +77,7 @@ struct CatDetailView: View {
                         Text("Learn more about \(catDetails.breeds?.first?.name ?? "Name unavailable")")
                             .foregroundStyle(.blue)
                             .onTapGesture {
-                                if let url = URL(string: catDetails.breeds?.first?.wikipediaUrl ?? "www.wikipedia.com") {
+                                if let url = URL(string: catDetails.breeds?.first?.wikipediaUrl ?? "https://en.wikipedia.org/wiki/Cat") {
                                                 UIApplication.shared.open(url)
                                             }
                                         }
