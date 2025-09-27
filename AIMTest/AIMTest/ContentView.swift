@@ -32,6 +32,8 @@ struct ContentView: View {
                                 AsyncImage(url: URL(string: cat.url)) { phase in
                                     if let image = phase.image {
                                         image.resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .clipShape(RoundedRectangle(cornerRadius: 15))
                                         } else if phase.error != nil {
                                             Color.pink
                                         } else {
@@ -39,11 +41,10 @@ struct ContentView: View {
                                         }
                                 }
                                 .frame(width:100, height:100)
-                                LabeledContent {
-                                    Text(cat.breeds?.first?.name ?? "Unavailable")
-                                } label: {
-                                    Text("Name: ")
-                                }
+                                Spacer()
+                                Text(cat.breeds?.first?.name ?? "Unavailable")
+                                    .font(.headline)
+                                Spacer()
                             }
                         }
                     }
