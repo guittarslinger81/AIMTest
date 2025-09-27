@@ -12,6 +12,9 @@ struct CatImage: Codable, Identifiable {
     var url: String
     var width: Int
     var height: Int
+    var breeds: [CatBreed]
+    var favourite: Favourite?
+    var vote: Vote?
 }
 
 struct CatDetails: Codable, Identifiable {
@@ -49,4 +52,12 @@ struct CatBreed: Codable {
 struct Weight: Codable {
     var imperial: String
     var metric: String
+}
+
+struct Favourite: Codable {
+    
+}
+
+struct Vote: Codable {
+    
 }
