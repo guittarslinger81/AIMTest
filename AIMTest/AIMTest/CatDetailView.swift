@@ -42,40 +42,41 @@ struct CatDetailView: View {
                         LabeledContent {
                             Text(catDetails.breeds?.first?.weight.imperial ?? "Unavailable")
                                 .padding(.horizontal, 20)
-                                .foregroundStyle(.black)
+                                .foregroundStyle(.colorTextMain)
                         } label: {
                             Text("Weight (in lbs): ")
                                 .padding(.horizontal, 20)
-                                .foregroundStyle(.purple)
+                                .foregroundStyle(.colorTextLabel)
                         }
                         LabeledContent {
                             Text(catDetails.breeds?.first?.origin ?? "Unavailable")
                                 .padding(.horizontal, 20)
-                                .foregroundStyle(.black)
+                                .foregroundStyle(.colorTextMain)
                         } label: {
                             Text("Origin: ")
                                 .padding(.horizontal, 20)
-                                .foregroundStyle(.purple)
+                                .foregroundStyle(.colorTextLabel)
                         }
                         LabeledContent {
                             Text(catDetails.breeds?.first?.lifeSpan ?? "Unavailable")
                                 .padding(.horizontal, 20)
-                                .foregroundStyle(.black)
+                                .foregroundStyle(.colorTextMain)
                         } label: {
                             Text("Life Span (in years): ")
                                 .padding(.horizontal, 20)
-                                .foregroundStyle(.purple)
+                                .foregroundStyle(.colorTextLabel)
                         }
                         Spacer().frame(height: 25)
                         Text("Temperament:")
-                            .foregroundStyle(.purple)
+                            .foregroundStyle(.colorTextLabel)
                             .font(.headline)
                         Spacer().frame(height: 10)
                         Text(catDetails.breeds?.first?.temperament ?? "Unavailable")
                             .padding(.horizontal, 20)
+                            .foregroundStyle(.colorTextMain)
                         Spacer().frame(height: 50)
                         Text("Learn more about \(catDetails.breeds?.first?.name ?? "Name unavailable")")
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(.colorTextLink)
                             .onTapGesture {
                                 if let url = URL(string: catDetails.breeds?.first?.wikipediaUrl ?? "https://en.wikipedia.org/wiki/Cat") {
                                                 UIApplication.shared.open(url)
@@ -84,6 +85,7 @@ struct CatDetailView: View {
                         Spacer()
                     }
                     .padding()
+                    .background(.colorBGSecondary)
                 }
             }
         }

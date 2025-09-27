@@ -43,10 +43,13 @@ struct ContentView: View {
                                 Spacer()
                                 Text(cat.breeds?.first?.name ?? "Unavailable")
                                     .font(.headline)
+                                    .foregroundStyle(Color.colorTextMain)
                                 Spacer()
                             }
                         }
                     }
+                    .scrollContentBackground(.hidden)
+                    .background(Color.colorBGSecondary)
                 }
             }
             .navigationTitle("CDS FIELD GUIDE")
