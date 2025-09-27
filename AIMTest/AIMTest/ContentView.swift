@@ -25,9 +25,19 @@ struct ContentView: View {
                 } else {
                     List(catListResults, id: \.self) { cat in
                         NavigationLink(destination: CatDetailView(cat: selectedCat)) {
-                            
+                            HStack {
+                                
+                            }
                         }
                     }
+                }
+            }
+            .navigationTitle("Cats Are Best")
+            .task {
+                do {
+                    try await loadCatsList()
+                } catch {
+                    errorMessage = error.localizedDescription
                 }
             }
         }
