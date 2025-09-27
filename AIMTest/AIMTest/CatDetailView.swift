@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CatDetailView: View {
+    
     var catId: String
     var apiHelper = CatAPIHelper()
     @State private var catDetails = CatDetails()
